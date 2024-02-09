@@ -18,11 +18,12 @@ export default function column(props) {
     return( 
     <Container>
     <Title>{props.column.title} {props.column.id}</Title>
-    <Droppable droppableId={props.column.id}>
+    <Droppable droppableId={props.column.id} index={props.column.id}>
         {
             (provide)=><TaskList 
                 ref={provide.innerRef} 
-                {...provide.droppableProps}>
+                {...provide.droppableProps}
+>
                 {props.tasks.map((task,index) => <Task key={task.id} task={task} index={index}/>)}
                 {provide.placeholder}
                 </TaskList>

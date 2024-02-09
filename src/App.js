@@ -1,24 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import initialData from './initial-data';
 import Column from './column';
 import { DragDropContext } from 'react-beautiful-dnd';
-class App extends React.Component {
-  state = initialData
-  onDragEnd(){
+function App (){
+  const [state,setState] = useState(initialData)
+  function onDragEnd(){
 
   }
-  render() {
     return (
       <DragDropContext>
        { 
-      this.state.columnOrder.map((columnId) => {
-      const column = this.state.columns[columnId];
-      const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
-        return <Column key={column.id} column={column} tasks={tasks} />
+      state.columnOrder.map((columnId) => {
+;
+        return <Column key={state.columns[columnId].id} column={state.columns[columnId]} tasks={state.columns[columnId].taskIds.map(taskId => state.tasks[taskId])} />
         })
-        }
+      }
     </DragDropContext>
   )
-}
+
 }
 export default App;
